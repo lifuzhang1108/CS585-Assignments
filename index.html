@@ -1,33 +1,164 @@
 
 <html><head>
 <title> CS585 Image and Video Computing -- Lifu Zhang </title>
+<style>
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
 </head>
 <body>
 <h1>CS585 Image and Video Computing --  <a href="https://lifuzhang1108.github.io/personal-site/">Lifu Zhang</a></h1>
-<div>
-<hr>
-<h1>HW1</h1>
-<br>
-<h2> Task and Methods </h2>
-<p> The premise of this task is to read image using python opencv, and manipulate the image array to make a grayscale version and a blurred version of that image. </p>
-<p> For grayscale image, my algorithms is to take the average of the RGB value and replace each pixel with a single channel. </p>
-<p> For blurred image, my algorithms is to assign each pixel to their closest topleft pixel whose x,y coordinates are divisble by 10.</p>
-<br>
-<h2>Results</h2>
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'HW1')">HW1</button>
+  <button class="tablinks" onclick="openCity(event, 'HW2')">HW2</button>
+</div>
 
-<p>
-<table>
-<tr>
-<td><center><b> Input Image  </b></center></td> <td><center><b> Grayscale </b></center></td><td><center><b> Blurred Grayscale </b></center></td>
-</tr>
-<tr>
-  <td><center> <img src="./hw1-Zhang/me.jpg" height="150"> </center></td> 
-  <td><center> <img src="./hw1-Zhang/gray.jpg" height="150"> </center></td> 
-  <td><center> <img src="./hw1-Zhang/blur.jpg" height="150"> </center></td>
-</tr> 
-</tbody></table>
-</p>
-<br>
-<hr>
+<div id="HW1" class="tabcontent">
+  <div>
+    <hr>
+    <h1>HW1</h1>
+    <br>
+    <h2> Task and Methods </h2>
+    <p> The premise of this task is to read image using python opencv, and manipulate the image array to make a grayscale version and a blurred version of that image. </p>
+    <p> For grayscale image, my algorithms is to take the average of the RGB value and replace each pixel with a single channel. </p>
+    <p> For blurred image, my algorithms is to assign each pixel to their closest topleft pixel whose x,y coordinates are divisble by 10.</p>
+    <br>
+    <h2>Results</h2>
+    
+    <p>
+    <table>
+    <tr>
+    <td><center><b> Input Image  </b></center></td> <td><center><b> Grayscale </b></center></td><td><center><b> Blurred Grayscale </b></center></td>
+    </tr>
+    <tr>
+      <td><center> <img src="./hw1-Zhang/me.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw1-Zhang/gray.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw1-Zhang/blur.jpg" height="150"> </center></td>
+    </tr> 
+    </tbody></table>
+    </p>
+    <br>
+    <hr>
+    </div>
+</div>
+
+<div id="HW2" class="tabcontent">
+  <div>
+    <hr>
+    <h1>HW2</h1>
+    <br>
+    <h2> Task and Methods </h2>
+    <p> The premise of this task is to implement algorithms that recognize hand shapes. </p>
+    <p>To ahieve that, we first use skin color detection to generate binary image stream, we then use matchTemplate function to compare with the binary image of original image.</p>
+    <p></p>We then show each gesture to the program 10 times in random order, and record the ourput each time, and build a matrix out of those 40 data points</p>
+    <br>
+    <h2>Results</h2>
+    
+    <table>
+    <tr>
+    <td><center><b> Rock  </b></center></td> <td><center><b> Thumb </b></center></td><td><center><b> Paper </b></center></td><td><center><b> Scissors </b></center></td>
+    </tr>
+    <tr>
+      <td><center> <img src="./hw2-Zhang/Fist.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw2-Zhang/Thumb.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw2-Zhang/Palm.jpg" height="150"> </center></td>
+      <td><center> <img src="./hw2-Zhang/Yeah.jpg" height="150"> </center></td>
+    </tr> 
+    <tr>
+      <td><center> <img src="./hw2-Zhang/fist1.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw2-Zhang/thumb1.jpg" height="150"> </center></td> 
+      <td><center> <img src="./hw2-Zhang/palm1.jpg" height="150"> </center></td>
+      <td><center> <img src="./hw2-Zhang/yeah1.jpg" height="150"> </center></td>
+    </tr> 
+    </tbody></table>
+
+    <h3> Confusion Matrix </h3>
+    <table>
+      <tr>
+        <td><center><b> Predicted/True </b></center></td><td><center><b> Rock  </b></center></td> <td><center><b> Thumb </b></center></td><td><center><b> Paper </b></center></td><td><center><b> Scissors </b></center></td>
+      </tr>
+      <tr>
+        <td><center><b> Rock  </b></center></td><td>9</td><td>0</td><td>0</td><td>1</td>
+      </tr> 
+      <tr>
+        <td><center><b> Thumb </b></center></td><td>2</td><td>8</td><td>0</td><td>0</td>
+      </tr> 
+      <tr>
+        <td><center><b> Paper </b></center></td><td>0</td><td>0</td><td>10</td><td>0</td>
+      </tr> 
+      <tr>
+        <td><center><b> Scissors </b></center></td><td>0</td><td>1</td><td>0</td><td>9</td>
+      </tr> 
+      </tbody></table>
+    <h3> Comments </h3>
+    <p> This program we built can recognize different gestures with fairly good accuracy. With this function, we can potentially build a rock paper scissors game based on hand gestures </p>
+    <br>
+    <hr>
+    </div>
+</div>
+</div>
+<!-- 
+<div id="HW" class="tabcontent">
+  <h3>HW3</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div> -->
 
 
+
+
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
